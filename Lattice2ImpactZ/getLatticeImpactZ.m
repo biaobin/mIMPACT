@@ -164,7 +164,7 @@ for j=1:length(Line)
             if Line{j}.SampleFreq > 0   
                 % by default add -8 element before every -2 element
                 fprintf(fid,'0 0 %d -8 %d / \n',str2num(Line{j}.Name)+1000,Line{j}.bin);
-                fprintf(fid,'0 0 %d -2 0 %d / \n',str2num(Line{j}.Name),Line{j}.SampleFreq);
+                fprintf(fid,'0 0 %d -2 %d / \n',str2num(Line{j}.Name),Line{j}.SampleFreq);
             end
         case 'SextPass'
             %for thin sext, k2=K2*Lsext
