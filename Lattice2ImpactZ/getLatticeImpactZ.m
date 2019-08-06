@@ -121,9 +121,9 @@ for j=1:length(Line)
             % the first one turn on, the second one turn off
             switch contrl.wakeflag
                 case 'OFF'
-                      % no printing
-                    wakeID = -1;
-                    fprintf(fid,'0 0 1 -41 1.0 %d %d / \n',contrl.wakefileID,wakeID);
+                    %no printing
+                    %wakeID = -1;
+                    %fprintf(fid,'0 0 1 -41 1.0 %d %d / \n',contrl.wakefileID,wakeID);
                 case 'ON'
                     % ON by default refers to L+Twake
                     wakeID = 25;
@@ -141,30 +141,30 @@ for j=1:length(Line)
             fprintf(fid,'%f %d %d 103 %30.20e %30.20e %30.20e %d 1.0 / \n', ...
                     Line{j}.Length,Line{j}.steps,maps,Line{j}.Gradient,Line{j}.Frequency,tmp_phase,Line{j}.ID);
             % close the structure wakefield
-%             if ~strcmp(contrl.wakeflag,'OFF')
+            if ~strcmp(contrl.wakeflag,'OFF')
                 wakeID = -1;
                 fprintf(fid,'0 0 1 -41 1.0 %d %d / \n',contrl.wakefileID,wakeID);
-%             end
+            end
         case 'ChirpPass'
             % chirp pass, which is modified in Z-code's -21 element
             % -21 element use matrix method, so r56>0, h<0 for compression
             fprintf(fid,'0 0 0 -21 1.0 %22.15e %22.15e 0 0 0 0 / \n', Line{j}.r56, Line{j}.r65);               
         case 'MarkPass'
             % by default, sample is 1.0, bin is 512
-            if ~isfield(Line{j},'sample')
+            if ~isfield(Line{j},'SampleFreq')
                 Line{j}.sample = 1;
             end
-            
+            % by default bin number is 128
             if ~isfield(Line{j},'bin')
-                Line{j}.bin = 512;
+                Line{j}.bin = 128;
             end
             % if sample frequency is 0, then no output, i.e. no -2 and -8 
             % element written in ImpactZ.in, this is for speeding up
             % optimization
-            if Line{j}.sample > 0                       
-                fprintf(fid,'0 0 %d -2 0 %d / \n',str2num(Line{j}.Name),Line{j}.sample);
-                %by default add -8 element after every -2 element
+            if Line{j}.SampleFreq > 0   
+                % by default add -8 element before every -2 element
                 fprintf(fid,'0 0 %d -8 %d / \n',str2num(Line{j}.Name)+1000,Line{j}.bin);
+                fprintf(fid,'0 0 %d -2 0 %d / \n',str2num(Line{j}.Name),Line{j}.SampleFreq);
             end
         case 'SextPass'
             %for thin sext, k2=K2*Lsext
