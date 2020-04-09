@@ -96,8 +96,8 @@ for j=1:NE
         % add chirp matrix
         case 'ChirpPass'
             E_central(j+1) = E_central(j); 
-            mat = Mchirp(Line{j}.r65);                   
-
+            mat = Mchirp(Line{j}.r56,Line{j}.r65); 
+             
         % ----------------------------------------------------------
         % following are all drift=0 matrix, just for ImpactZ.in file
         % ignore all the nonlinear elements

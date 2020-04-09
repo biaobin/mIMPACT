@@ -3,7 +3,6 @@ clear global
 clc
 % close all
 
-setpath()
 tmp = const;
 mev = tmp.mev_elegant * 1e6;
 

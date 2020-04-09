@@ -27,6 +27,9 @@ Z0 = const.Z0;  % impedance in vacume
 % average model
 func =@(s) i*Z0./(pi*rb*(gamma0+A*s)) .*( 1-2*besseli(1,k*rb./(gamma0+A*s)).*besselk(1,k*rb./(gamma0+A*s)) )./ (k*rb./(gamma0+A*s)) ;  
 
+% 3D model
+% func =@(s) i*Z0./(pi*rb*(gamma0+A*s))*0.5;
+
 sumZ = integral(func,0,L);
  
 end

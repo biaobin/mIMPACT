@@ -3,7 +3,7 @@ function getLattice(Line,contrl)
 %                     values
 
 %steps=StepNum*ceil(ElementLength)
-StepNum=3;  %3 kicks per meter
+StepNum = contrl.StepNum; 
 
 % maps by default is 1, what's the use of this parameter?
 maps  = 1;

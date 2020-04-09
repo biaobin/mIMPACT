@@ -7,6 +7,7 @@ I0    = input.I0;
 A     = input.A;
 gamma = input.gamma;
 
+%for gaussian distribution
 % rb = 1.7/2 * (sig_x + sig_y);
 
 %for uniform distribution
