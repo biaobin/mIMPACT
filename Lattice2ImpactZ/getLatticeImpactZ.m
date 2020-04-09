@@ -27,11 +27,11 @@ for j=1:length(Line)
             end        
             %linear map or nonlinear map contrl 
             if Line{j}.ID==0
-                % linear map with ID=0
-                Line{j}.ID=0;
+                % linear map with ID<0
+                Line{j}.ID=-1;
             else
-                % nonlinear map with ID=5
-                Line{j}.ID=5;
+                % otherwise nonlinear map
+                Line{j}.ID=0;
             end
                         
             fprintf(fid,'%f %d %d 0 1.0 %d / \n',Line{j}.Length,Line{j}.steps,maps,Line{j}.ID);

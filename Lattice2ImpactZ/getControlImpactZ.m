@@ -35,6 +35,7 @@ control_file = [ ...
 '%22.15e %22.15e %22.15e -1.0 %22.15e 0.0 \n' %11. current
 ];
 
+%% IMPACT-Z V2.1 now with twiss parameters as input
 in_va = [input1.proc ...            %1.
          input1.par_num ...         %2.
          input1.grid ...            %3. input valuable
@@ -42,9 +43,9 @@ in_va = [input1.proc ...            %1.
          input1.par_num ...         %5
          I_avef0 ...            %6 ???
          q_m  ...               %7
-         input1.sigx input1.sigpx    input1.sigxpx   ...         %8
-         input1.sigy input1.sigpy    input1.sigypy   ...         %9
-         input1.sigz input1.sig_dgam input1.sigzdgam ...         %10
+         input1.alphax input1.betax    input1.enx   ...         %8
+         input1.alphay input1.betay    input1.eny   ...         %9
+         input1.alphaz input1.betaz    input1.enz ...         %10
          I_avef0 W0 const.mev_impact*1E6 f0 ...      %11       
          ];
 
